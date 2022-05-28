@@ -1,12 +1,11 @@
-# Train360
-# Vonatjegyes alkalmazás
+# Train360 -  Vonatjegyes alkalmazás
 > Vizsgaremek feladat
 
 ***
 
 ## _Leírás_
 
-Az alkalmazás egy mobilra is optimalizált, bootstrappal támogatott Angulat alapú alkalmazás, melyben lehetőség van felhasználóként
+Ez egy mobilra is optimalizált, bootstrappal támogatott Angular alapú alkalmazás, melyben lehetőség van felhasználóként
 
 - vonatjegyek megtekintésére és vásárlására
 - megvásárolt jegyek megtekintésére
@@ -61,7 +60,7 @@ illetve adminisztrátorként
 | Felhasználóként | jegyet szeretnék venni az adott vonatra | nem kell a jegyek oldalra visszamennem | "Jegy vásárlása" gomb, mely visszairányít a jegyek oldalra és a találatokat az adott vonatra szűri |
 | Adminként | szeretnék új vonatot hozzáadni | hogy kiegészítsem az adatbázist az újonnan elérhető vonatokkel. | Új vonat hozzáadása az utolsó kártyán, amely átirányít az új vonat felvétele oldalra. |
 | Adminként | szeretném szerkeszteni a meglévő vonatokat | hogy kijavítsam/kibővítsem az vonat adatait. | Módosítás gomb a vonat kártyán, amely átirányít az vonat szerkesztése oldalra. |
-| Adminként | szeretnék törölni egy vonatot | hogy a már nem elérhető/hibás jegyek ne szerepeljenek az adatbázisban. | Törlés gomb a vonat kátyán, amely megerősítés után törli az vonatot. |
+| Adminként | szeretnék törölni egy vonatot | hogy a már nem elérhető/hibás jegyek ne szerepeljenek az adatbázisban. | Törlés gomb a vonat kártyán, amely megerősítés után törli az vonatot. |
 ### Vásárlók oldal
 
 | Felhasználó személye | Tevékenység | Haszon | Elfogadási kritérium |
