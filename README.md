@@ -18,6 +18,8 @@ illetve adminisztrátorként
 - számlák kezelésére (crud)
 - vásárlók kezelésére (crud)
 
+Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
+
 ## _Felhasználói történetek_
 
 ### Navigációs sáv
@@ -40,7 +42,7 @@ illetve adminisztrátorként
 | --- | --- | --- | --- |
 | Felhasználóként | szeretném látni az összes jegyet | hogy választani tudjak | Lista az összes jegyről |
 | Felhasználóként | sorba rendezni és szűrni a jegyeket | hogy könnyebben megtaláljam, amit keresek | Fejlécre kattintással sorbarendezés, szűrő input felül |
-| Felhasználóként | megvásárolni egy jegyet | megvásárolni egy jegyet | Jegy vásárlása gomb a jegy sorában, amely egy modalt nyit (utazók száma és kedvezmény megadásához) majd a jegy át kerül a saját jegyek oldalra. |
+| Felhasználóként | megvásárolni egy jegyet | nem büntet meg a kaller | Jegy vásárlása gomb a jegy sorában, amely egy modalt nyit (utazók száma és kedvezmény megadásához) majd a jegy át kerül a saját jegyek oldalra. |
 | Adminként | szeretnék új jegyet hozzáadni | hogy kiegészítsem az adatbázist az újonnan elérhető jegyekkel. | Új jegy hozzáadása gomb, amely átirányít az új jegy felvétele oldalra. |
 | Adminként | szeretném szerkeszteni a meglévő jegyeket | hogy kijavítsam/kibővítsem az jegy adatait. | Módosítás gomb a jegy sorában, amely átirányít az jegy szerkesztése oldalra. |
 | Adminként | szeretnék törölni egy jegyet | hogy a már nem elérhető/hibás jegyek ne szerepeljenek az adatbázisban. | Törlés gomb a jegy sorában, amely megerősítés után törli az jegyet. |
