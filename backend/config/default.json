@@ -1,0 +1,7 @@
+{
+    "database": {
+        "db_username": "vizsgaremek",
+        "db_password": "vizsgaremek",
+        "db_host": "@cluster0.41sdc.mongodb.net/?retryWrites=true&w=majority"
+    }
+}

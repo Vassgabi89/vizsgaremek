@@ -1,9 +1,10 @@
+import { JwtInterceptor } from './service/jwt.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule }   from '@angular/forms';
 
 import { NavbarComponent } from './common/navbar/navbar.component';
@@ -19,7 +20,9 @@ import { TrainDetailComponent } from './common/train-detail/train-detail.compone
 import { LoginComponent } from './pages/login/login.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { MyTicketsComponent } from './pages/my-tickets/my-tickets.component';
-import { AboutComponent } from './pages/about/about.component';
+import { UsersComponent } from './pages/users/users.component';
+import { LoginService } from './service/login.service';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { AboutComponent } from './pages/about/about.component';
     LoginComponent,
     StatisticsComponent,
     MyTicketsComponent,
-    AboutComponent
+    UsersComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,16 @@ import { AboutComponent } from './pages/about/about.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      deps: [
+        LoginService
+      ],
+      multi: true //így több provider is beköthető ugyanarra a műveletre
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

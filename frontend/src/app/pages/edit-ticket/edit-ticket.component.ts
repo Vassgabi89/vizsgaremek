@@ -20,7 +20,8 @@ export class EditTicketComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private ticketService: TicketService,
     private trainService: TrainService,
-    private router: Router
+    private router: Router,
+    //private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -31,8 +32,14 @@ export class EditTicketComponent implements OnInit {
         return
       }
       this.ticketService.get(param['id']).forEach(ticket => {
-        this.ticket = ticket
+        this.ticket = ticket//EZ KELL IDE???
       })
+      /*
+      //Józsi megoldása: subscribe helyett pipe és switchmap
+      product$: Observable<Product> = this.activatedRoute.params.pipe(
+        switchMap(params => this.productService.getOne(params['id'])),
+      )
+      */
     })
   }
 
@@ -54,15 +61,19 @@ export class EditTicketComponent implements OnInit {
     */
 
     if (!this.newTicket) {
+      //console.log(ticket);
       const data = this.ticketService.update(ticket).subscribe(
         //datas => console.log(datas)
         datas => this.router.navigateByUrl('tickets')
-        )
-      }
-      else {
-        const data = this.ticketService.create(ticket).subscribe(
-          //datas => console.log(datas)
-          datas => this.router.navigateByUrl('tickets')
+      )
+    }
+    else {
+      const data = this.ticketService.create(ticket).subscribe(
+        //datas => console.log(datas)
+        datas =>
+          this.router.navigateByUrl('tickets')
+        //window.history.back()
+        //this.location.back()
       )
     }
     //this.router.navigateByUrl('tickets')

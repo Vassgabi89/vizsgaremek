@@ -1,3 +1,4 @@
+import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Train } from 'src/app/model/train';
@@ -10,7 +11,8 @@ import { TrainService } from 'src/app/service/train.service';
 })
 export class TrainsComponent implements OnInit {
 
-  admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
+  signedIn = this.loginService.signedIn()
+  //admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
 
   trainList$ = this.trainService.getAll()
   myTrain!: Train
@@ -18,11 +20,19 @@ export class TrainsComponent implements OnInit {
 
   constructor(
     private trainService: TrainService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
-
+    /*
+    this.trainList$.subscribe(trains =>{
+      trains.forEach(train => {
+        train.pic= (`../../assets/img/trains/${train._id}.jpg`)
+        console.log(train.pic);
+      });
+    })
+    */
   }
 
   onSelect(train: Train):void {
@@ -32,7 +42,7 @@ export class TrainsComponent implements OnInit {
 
   onDelete(train: Train): void {
     if (!confirm('Are you sure')) return
-    this.trainService.delete(train.id).subscribe(
+    if (train._id !== undefined) this.trainService.delete(train['_id']).subscribe(
       //datas => console.log(datas)
       datas => location.reload()
     )

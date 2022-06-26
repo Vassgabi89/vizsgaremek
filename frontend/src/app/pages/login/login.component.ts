@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  adminLoginData:any = {name:'', passw:''}
+  loginData:any = {email: '', password: ''}
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+    ) { }
 
   ngOnInit(): void {
+    this.loginService.logout()
   }
 
   login(): void {
-    if (!localStorage.getItem('admin') || localStorage.getItem('admin') === 'false') localStorage.setItem('admin', 'true')
-    this.router.navigateByUrl('home')
-    setTimeout(() => {
-      location.reload()
-    }, 1000);
+    this.loginService.login(this.loginData)
   }
 
 }

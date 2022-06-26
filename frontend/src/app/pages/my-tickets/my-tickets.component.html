@@ -1,21 +1,27 @@
-<h1 class="text-center my-5"> My tickets</h1>
+<div *ngIf="!signedIn">
+  <h1 class="text-center my-5"> Please, sign in</h1>
+</div>
 
-<div class="row mx-5">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Departure</th>
-        <th>Arrival</th>
-        <th>Departure time</th>
-        <th>Travel time</th>
-        <th>Arrival time</th>
-        <th >Train</th>
-        <th >Price</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngIf="myTickets">
-      <!-- <tr class="ticket"
+<div *ngIf="signedIn">
+
+  <h1 class="text-center my-5"> My tickets</h1>
+
+  <div class="row mx-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Departure time</th>
+          <th>Arrival time</th>
+          <th>Reduced fare</th>
+          <th>Passengers</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr class="ticket"
         *ngFor="let ticket of ticketCookie | async">
         <td>{{ ticket.departure_location }}</td>
         <td>{{ ticket.arrival_location }}</td>
@@ -30,21 +36,80 @@
           </div>
         </td>
       </tr> -->
-      <tr class="ticket"
-        *ngFor="let ticket of myTickets">
-        <td>{{ ticket.departure_location }}</td>
-        <td>{{ ticket.arrival_location }}</td>
-        <td class="text-center hideInMobileView">{{ ticket.departure_date }} {{ ticket.departure_time }}</td>
-        <td class="text-center hideInTabletView">{{ ticket.travel_time }}</td>
-        <td class="text-center hideInMobileView">{{ ticket.arrival_date }} {{ ticket.arrival_time }}</td>
-        <td>{{ ticket.train?.name }}</td>
-        <td class="text-center">{{ ticket.fullPrice }} Ft</td>
-        <td class="text-center">
-          <div class="btn-group">
-            <button class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i></button>
+        <tr class="ticket" *ngFor="let ticket of myTicketList">
+          <td>{{ ticket.departure_location }}</td>
+          <td>{{ ticket.arrival_location }}</td>
+          <td class="text-center hideInMobileView">{{ ticket.departure_date }} {{ ticket.departure_time }}</td>
+          <td class="text-center hideInMobileView">{{ ticket.arrival_date }} {{ ticket.arrival_time }}</td>
+          <td class="text-center">{{ ticket.reducedFare }}%</td>
+          <td class="text-center">{{ ticket.passengers }}</td>
+          <td class="text-center">{{ ticket.fullPrice }} Ft</td>
+          <td class="text-center">
+            <div class="btn-group">
+              <button (click)="onShowBill(ticket._id)" class="btn btn-primary"><i class="fa fa-print"
+                  aria-hidden="true"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="showBill" class="billModal p-4">
+      <div class=" mx-5">
+        <button (click)="showBill = false" class="btn-danger closeModalBtn">
+          <i class="fa fa-times"></i>
+        </button>
+
+        <h2 class="text-center font-weight-bold my-5">Bill</h2>
+
+        <div class="dropdown-divider my-3"></div>
+
+        <!-- Seller and buyer details -->
+        <div class="row">
+          <div class="col-6 seller">
+            <p class="font-weight-bold"> Train360 Kft.</p>
+            <p>Hungary</p>
+            <p>Budapest V.</p>
+            <p>Avonat Nemvár street 55.</p>
+            <p>1111</p>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <div class="col-6 buyer">
+            <p class="font-weight-bold">{{ myBill.user?.first_name }} {{ myBill.user?.last_name }}</p>
+            <p>Contact: {{ myBill.user?.email }}</p>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <!-- Product details -->
+
+        <div class="row">
+          <table class="table mx-3 my-3">
+            <thead>
+              <tr class="text-center">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Passengers</th>
+                <th>Reduced fare</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td class="font-weight-bold">Ticket</td>
+                <td>{{ myBill.myTicket?.price }} Ft</td>
+                <td>{{ myBill.passengers }}</td>
+                <td>{{ myBill.reducedFare }}%</td>
+                <td>{{ myBill.fullPrice }} Ft</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <h2 class="text-right">Total: {{ myBill.fullPrice }} Ft</h2>
+
+      </div>
+    </div>
+  </div>
 </div>

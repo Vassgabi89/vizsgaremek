@@ -81,7 +81,7 @@ td{
   }
 }
 
-.ticketDetailModal {
+.billModal {
   position: fixed!important;
   z-index: 2;
   top: 10%;
@@ -100,12 +100,8 @@ td{
   cursor: pointer;
 }
 
-.ticketInformation span{
-  font-size: 15px;
-}
-
 @media screen and (max-width: 992px) {
-  .ticketDetailModal {
+  .billModal {
     width: 80%;
     height: 90%;
     left: 10%;

@@ -5,6 +5,8 @@ import { forkJoin, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ticket } from '../model/ticket';
 import { Train } from '../model/train';
+import { VariableBinding } from '@angular/compiler';
+import { Bill } from '../model/bill';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +21,20 @@ export class TicketService {
     private trainService: TrainService,
   ) { }
 
-  get(id: number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.apiUrl}/${this.entityName}/${id}`)
+  get(id: string): Observable<Ticket> {
+    const ticket = this.http.get<Ticket>(`${this.apiUrl}/${this.entityName}/${id}`)
+    //ticket.subscribe(d => console.log(d))
+    return ticket
   }
 
   getAll(): Observable<Ticket[]> {
     const tickets = this.http.get<Ticket[]>(`${this.apiUrl}/${this.entityName}`)
+    //tickets.subscribe(d => console.log(d))
     const trains = this.trainService.getAll()
     const ticketsWithTrains = forkJoin([tickets, trains]).pipe(
       map(([ticketlist, trainlist]) => {
         ticketlist.map((ticket) => {
-          const train = trainlist.find((train) => train.id === ticket.trainID) || new Train()
+          const train = trainlist.find((train) => train._id === ticket.trainID) || new Train()
           ticket.train = train
         })
         return ticketlist
@@ -37,6 +42,7 @@ export class TicketService {
       )
     )
     return ticketsWithTrains
+
   }
   /*
     override getAll(): Observable<Order[]> {
@@ -68,15 +74,26 @@ export class TicketService {
 
 
   create(ticket: Ticket): Observable<any> {
+    delete ticket._id;
     return this.http.post<any>(`${this.apiUrl}/${this.entityName}`, ticket)
   }
 
-  update(ticket: Ticket): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${this.entityName}/${ticket.id}`, ticket)
+  update(ticket: Ticket): Observable<any> { //törölnünk kell az id-t, mert azt nem kell elküldeni
+    const id = ticket._id; //id törlés előtt kimentem
+    delete ticket._id; //egyszerű törlés objektumból (a modellben az _id-t opcionálissá kell tenni)
+    //console.log(ticket);
+    return this.http.patch<any>(`${this.apiUrl}/${this.entityName}/${id}`, ticket)
   }
 
-  delete(id: number): Observable<any> {
+  delete(id: string | number): Observable<any> {
+    //console.log('törlök');
+    //console.log(id);
     return this.http.delete<any>(`${this.apiUrl}/${this.entityName}/${id}`)
+  }
+
+  saveBill(bill: Bill): Observable<any> {
+    delete bill._id;
+    return this.http.post<any>(`${this.apiUrl}/bills`, bill)
   }
 
 }

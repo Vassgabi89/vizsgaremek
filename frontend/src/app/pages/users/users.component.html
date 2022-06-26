@@ -1,0 +1,81 @@
+<div *ngIf="!signedIn">
+  <h1 class="text-center my-5"> Please, sign in</h1>
+</div>
+
+<div *ngIf="signedIn">
+
+<h1 class="text-center my-5"> Users</h1>
+
+<!-- search area -->
+<div class="row mx-5">
+  <div class="col-3 col-lg-8">
+    <p class="text-right font-weight-bold pt-2 searchuser">Search users:</p>
+  </div>
+  <div class="col-4 col-lg-2">
+    <select class="form-control " required [(ngModel)]="searchKey" (change)="clearKeyword()"
+      (change)="clearKeywordMinMax()">
+      <option [value]="'email'">Email</option>
+      <option [value]="'first_name'">First name</option>
+      <option [value]="'last_name'">Last name</option>
+      <option [value]="'role'">Role</option>
+    </select>
+  </div>
+  <div
+    *ngIf="searchKey === 'email' || searchKey === 'first_name' || searchKey === 'last_name'"
+    class="col-5 col-lg-2">
+    <input type="text" class="form-control" [(ngModel)]="keyword" placeholder="Search">
+  </div>
+  <div *ngIf="searchKey === 'role'" class="col-5 col-lg-2">
+    <select class="form-control text-center" [(ngModel)]="keyword">
+      <option [value]=1>User</option>
+      <option [value]=2>Editor</option>
+      <option [value]=3>Admin</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="row mx-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th (click)="sorting('email')">Email
+          <i *ngIf="sortKey == 'email' && sortDirection  == 'A...Z'" class="fa fa-caret-up ml-2"></i>
+          <i *ngIf="sortKey == 'email' && sortDirection  == 'Z...A'" class="fa fa-caret-down ml-2"></i>
+        </th>
+        <th (click)="sorting('first_name')">First name
+          <i *ngIf="sortKey == 'first_name' && sortDirection  == 'A...Z'" class="fa fa-caret-up ml-2"></i>
+          <i *ngIf="sortKey == 'first_name' && sortDirection  == 'Z...A'" class="fa fa-caret-down ml-2"></i>
+        </th>
+        <th (click)="sorting('last_name')">Last name
+          <i *ngIf="sortKey == 'last_name' && sortDirection  == 'A...Z'" class="fa fa-caret-up ml-2"></i>
+          <i *ngIf="sortKey == 'last_name' && sortDirection  == 'Z...A'" class="fa fa-caret-down ml-2"></i>
+        </th>
+        <th (click)="sorting('role')">Role
+        </th>
+        <th>
+          <button class="btn btn-success btn-block" [routerLink]="['/edit-user', 0]"><i class="fa fa-plus"
+              aria-hidden="true"></i></button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="user"
+        *ngFor="let user of userList$ | async | filter: searchKey:keyword:keywordMin:keywordMax | sorter: sortKey:sortDirection">
+        <td>{{ user.email }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.role }}</td>
+        <td class="text-center">
+          <div class="btn-group">
+            <button class="btn btn-primary" [routerLink]="['/edit-user', user._id]"><i class="fa fa-pencil"
+                aria-hidden="true"></i></button>
+            <button class="btn btn-danger" (click)="onDelete(user)"><i class="fa fa-times"
+                aria-hidden="true"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

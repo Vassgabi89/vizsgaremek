@@ -16,31 +16,39 @@ export class TrainService {
     private http: HttpClient
   ) { }
 
-  get(id_: any): Observable<Train> {
-    const id = parseInt(id_)
-    return this.http.get<Train>(`${this.apiUrl}/${this.entityName}/${id}`)
+  get(id: string | number): Observable<Train> {
+    const train = this.http.get<Train>(`${this.apiUrl}/${this.entityName}/${id}`)
+    return train
   }
 
   getAll(): Observable<Train[]> {
     const datas = this.http.get<Train[]>(`${this.apiUrl}/${this.entityName}`)
-    datas.subscribe(
-      trains => { trains.forEach(train => {
-        train.pic= (`../../../assets/img/trains/${train.id}.jpg`)
+    /*datas.subscribe(
+      trains => {
+        trains.forEach(train => {
+          train.pic= (`../../assets/img/trains/${train._id}.jpg`)
       })
+      console.log(trains);
       }
     )
+    */
     return datas
   }
 
   create(train:Train): Observable<any> {
+    //console.log('new train');
+    //console.log(train);
+    delete train._id;
     return this.http.post<any>(`${this.apiUrl}/${this.entityName}`, train)
   }
 
   update(train:Train): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${this.entityName}/${train.id}`, train)
+    const id = train._id;
+    delete train._id;
+    return this.http.patch<any>(`${this.apiUrl}/${this.entityName}/${id}`, train)
   }
 
-  delete(id: number): Observable<any> {
+  delete(id: string | number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${this.entityName}/${id}`)
   }
 }

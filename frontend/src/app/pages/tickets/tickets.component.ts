@@ -1,3 +1,7 @@
+import { UserService } from 'src/app/service/user.service';
+import { Bill } from './../../model/bill';
+import { MyticketsService } from './../../service/mytickets.service';
+import { LoginService } from 'src/app/service/login.service';
 import { TicketService } from './../../service/ticket.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,11 +15,14 @@ import { TrainService } from 'src/app/service/train.service';
 })
 export class TicketsComponent implements OnInit {
 
-  admin: boolean = (localStorage.getItem('admin') === 'true' ? true : false)
+  signedIn = this.loginService.signedIn() //lehet rövidíteni, nem kell a típust megadni, tudja
 
   ticketList$ = this.ticketService.getAll()
+  trainList$ = this.trainService.getAll()
+
   myTicket!: Ticket
   showTicketDetail: boolean = false
+  myBill: Bill = new Bill()
 
   sortKey: string = ''
   sortDirection: string = 'A...Z'
@@ -29,19 +36,25 @@ export class TicketsComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private trainService: TrainService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private loginService: LoginService,
+    private myTicketService: MyticketsService,
+    private userService: UserService
+  ) {
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem("myTrainID")) {
       this.searchKey = 'train'
-      const id = localStorage.getItem("myTrainID")
-      this.trainService.get(id).subscribe(
-        train => this.keyword = train.name
-      )
-      setTimeout(() => {
-        localStorage.removeItem("myTrainID")
-      }, 500);
+      const id = localStorage.getItem("myTrainID")?.toString()
+      if (id !== undefined) {
+        this.trainService.get(id).subscribe(
+          train => this.keyword = train.name
+        )
+        setTimeout(() => {
+          localStorage.removeItem("myTrainID")
+        }, 500);
+      }
     }
   }
 
@@ -63,7 +76,7 @@ export class TicketsComponent implements OnInit {
 
   onDelete(ticket: Ticket): void {
     if (!confirm('Are you sure')) return
-    this.ticketService.delete(ticket.id).subscribe(
+    if (ticket._id !== undefined) this.ticketService.delete(ticket._id).subscribe(
       //datas => console.log(datas)
       datas => location.reload()
     )
@@ -76,21 +89,15 @@ export class TicketsComponent implements OnInit {
     this.myTicket.passengers = 1
     this.myTicket.reducedFare = 10
     this.myTicket.fullPrice = Math.round(this.myTicket.price * this.myTicket.passengers * (1 - this.myTicket.reducedFare / 100))
+    this.myTicket.user = sessionStorage.getItem('loginData')?.split('"').find(data => data.includes("@"))
   }
 
   calcFullPrice(): void {
-    console.log(this.myTicket.passengers)
-    console.log(this.myTicket.reducedFare)
-    console.log(this.myTicket.fullPrice)
     if (this.myTicket.passengers && this.myTicket.reducedFare)
       this.myTicket.fullPrice = Math.round(this.myTicket.price * this.myTicket.passengers * (1 - this.myTicket.reducedFare / 100))
-    console.log(this.myTicket.fullPrice)
   }
 
-  onBuy(ticket: Ticket): void {
-  }
-
-  saveTicket(ticket: Ticket): void {
+  buyTicket(): void {
     /*
     const ticketCookie = document.cookie.split('; ').find(cookie => cookie.startsWith(`myTickets=`))
     //if (!ticketCookie) document.cookie = `myTickets= ${ticket.departure_location}---${ticket.arrival_location}---${ticket.departure_date}---${ticket.departure_time}---${ticket.travel_time}---${ticket.arrival_date}---${ticket.arrival_time}---${ticket.transfers}---${ticket.class}---${ticket.services}---${ticket.train?.name}---${ticket.price}---${ticket.passengers}---${ticket.reducedFare}---${ticket.fullPrice}!!!; expires=Fri, 30 Dec 2022 20:00:00 UTC;`
@@ -101,15 +108,37 @@ export class TicketsComponent implements OnInit {
       //console.log(ticket.departure_date)
     //}
     this.router.navigateByUrl('mytickets')*/
+    this.myBill.passengers = this.myTicket.passengers
+    this.myBill.reducedFare = this.myTicket.reducedFare
+    this.myBill.fullPrice = this.myTicket.fullPrice
 
-    ticket.bought = true
-    this.ticketService.update(ticket).subscribe(
-      data => {
-        console.log(data)
-        this.router.navigateByUrl('mytickets')
-      }
-    )
+    this.userService.getAll().subscribe(users => {
+      users.forEach(user => {
+        if (user.email === this.myTicket.user) {
+          this.myBill.userID = user._id
+          return
+        }
+      });
+      /*
+       this.myBill.userID = users.find(user=> {
+        user.email === this.myTicket.user})._id
+      */
 
+
+      //console.log('myTicket');
+      //console.log(this.myTicket);
+
+      this.myTicketService.create(this.myTicket).subscribe(
+        savedTicket => {
+          this.myBill.myTicketID = savedTicket._id
+          //console.log('myBill');
+          //console.log(this.myBill);
+
+          this.ticketService.saveBill(this.myBill).subscribe(
+            datas => {
+              this.router.navigateByUrl('mytickets')
+            })
+        })
+    })
   }
-
 }

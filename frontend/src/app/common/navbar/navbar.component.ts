@@ -1,3 +1,4 @@
+import { LoginService } from 'src/app/service/login.service';
 import { TicketService } from './../../service/ticket.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,34 +10,18 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  signedIn = this.loginService.signedIn()
   ticketList$ = this.ticketService.getAll()
-  admin: boolean = (localStorage.getItem('admin') === 'true' ? true : false)
+  user$ = this.loginService.user$;
 
   constructor(
     private router: Router,
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
   }
 
-  logout(): void {
-    this.ticketService.getAll().subscribe(
-      tickets => {
-        tickets.forEach(ticket => {
-          ticket.bought = false
-          this.ticketService.update(ticket).subscribe(
-            data => console.log(data)
-          )
-        })
-      }
-    )
-
-    localStorage.setItem('admin', 'false')
-    this.router.navigateByUrl('home')
-    setTimeout(() => {
-      location.reload()
-    }, 1000);
-  }
 
 }

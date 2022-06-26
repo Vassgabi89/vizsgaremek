@@ -1,0 +1,139 @@
+[{
+    "name": "Trans-Siberian Express",
+    "country": "Russia",
+    "year": 1891,
+    "description": "The Trans-Siberian Express built between 1891 to 1916 by order of the Russian Tsars Alexander III and his son Nicholas II, this largest railroad network in the world instantly became one of the most famous travel routes in the world. Connecting the main railway station in Moscow to the 9289km away city of Vladivostok, this impressive rail network became one of the easiest ways to travel across the vast expanses of Russia. Today, the trip from Moscow to Vladivostok on board the Trans-Siberian Express train “Rossiya” and “Golden Eagle” lasts 6 days and 4 hours, and the forked rail network at Ussuriysk enables the trains to travel further 3 days toward south, across the border of North Korea and straight to their capital of Pyongyang."
+  },
+  {
+    "name": "Orient Express",
+    "country": "France",
+    "year": 1883,
+    "description": "Orient Express is without the doubt one of the most famous trains of all time. The real reason for its popularity lies in its level of service and the popular stories that were centered around it (most famously by a detective novel “Murder on the Orient Express” written by Agatha Christie). The train was built and maintained as one of the most premium railway trains in the world at that time, offering high-end service and comfort for wealthy and business passengers that traveled between cities of Paris and Istanbul (then known as Constantinople). The original route was maintained between 1883 and 1977, switching to the shorter trips between Paris and Vienna. Eventually, after its schedule covered shorter and shorter routes, the name Orient Express disappeared from the European train schedules on 14 December 2009."
+  },
+  {
+    "name": "Flying Scotsman",
+    "country": "United Kingdom",
+    "year": 1862,
+    "description": "Flying Scotsman is the most famous train in Great Britain which connected the capitals of England and Scotland on a daily basis ever since 1862. During early decades, the travel time between London and Edinburgh was 10 and a half hours, but that time was eventually cut down by two hours. During the century and a half of service, this train line received many upgrades, with the latest modernization enabling it to finish its journey of 392 miles in just a 4 hours."
+  },
+  {
+    "name": "Golden Arrow",
+    "country": "United Kingdom",
+    "year": 1929,
+    "description": "After the success of luxury train line, Orient Express, train and railway company Compagnie Internationale des Wagons-Lits (CIWL) decided to expand their presence and offer similar high-end lines all across the Europe. One of their most successful attempts was Golden Arrow, a fast passenger train that operated between Victoria Station in London to the coastal town of Dover, where passengers could board the ferry that would carry them to the France and the train with the same name (La Flèche d’Or which translates to The Golden Arrow) on their way to Paris. The line remained active until 1971."
+  },
+  {
+    "name": "Blue Train",
+    "country": "South - Africa",
+    "year": 1923,
+    "description": "The art of luxury travel that was practiced by the CIWL company (who created and operated the lines of Orient Express and Golden Arrow) was perfected with Blue Train. Often promoted as “ magnificent moving five-star hotel”, Blue Train offers an unparalleled level of high-end service on its journey between the South African capital of Cape Town and the city of Pretoria. In its modern configuration, it offers butler service, fully soundproofed cars, elegantly designed interiors, fully carpeted compartments and the wide array of cars for entertainment (lounges, observation decks and more)."
+  },
+  {
+    "name": "Bullet Train (Shinkansen)",
+    "country": "Japan",
+    "year": 1964,
+    "description": "The increasing need for evolving public transport pushed Japan into creating Shinkansen, a network of train lines specifically created for high speed in 1964. The trains on that high-speed network gained nickname Bullet Trains, and in the following decades, both the trains and the railway network received numerous upgrades. Conventional rail trains can reach maximum operating speeds of 240-320km/h, while one line that uses maglev technology (Tokyo-Nagoya) can reach up to 603km/h."
+  },
+  {
+    "name": "TGV",
+    "country": "France",
+    "year": 1970,
+    "description": "The pride of France train network TGV (Train a Grande Vitesse, translated to “high-speed train”) was built in the 1970s as a solution for transporting people between major cities with speeds of up to 320km/h and sometimes average trip speeds of almost 280 km/h. The great success of the commercial use of TGV in 1981 caused large expansion of high-speed railway lines across the France. Neighboring countries such as Spain, Italy, and Germany quickly emulated France by building their high-speed network lines, but none of them managed to find the worldwide fame as TGV."
+  },
+  {
+    "name": "Eurostar",
+    "country": "France",
+    "year": 1968,
+    "description": "The difficulties of travel between England and France caused authorities to invest billions of euros into the construction of the 50.5-kilometer long underground tunnel under English Chanel and implementation of the famous high-speed Eurostar train line that connects London and Paris. Currently, the travel time of Eurostar between those cities is 2 hours and 15 minutes. The average speed of Eurostar is around 300 km/h, except during the passage through Channel Tunnel where the speed is reduced to 160 km/h for safety reasons."
+  },
+  {
+    "name": "Ghan",
+    "country": "Australia",
+    "year": 1929,
+    "description": "The difficulties of travel between England and France caused authorities to invest billions of euros into the construction of the 50.5-kilometer long underground tunnel under English Chanel and implementation of the famous high-speed Eurostar train line that connects London and Paris. Currently, the travel time of Eurostar between those cities is 2 hours and 15 minutes. The average speed of Eurostar is around 300 km/h, except during the passage through Channel Tunnel where the speed is reduced to 160 km/h for safety reasons."
+  },
+  {
+
+    "name": "Indian Pacific",
+    "country": "Australia",
+    "year": 1970,
+    "description": "In addition to Ghan which connects Adelaide and Darwin from south to north coast of Australia, this large country also has a large train route that connects it from west to east. Indian Pacific train line runs between Sidney, on the Pacific Ocean, all the way to Perth, on the coast of Indian Ocean. The journey across the 3960 km of Australian desert lasts three days, which includes the travel across the longest stretch of perfectly straight railway track in the world (477 kilometers)."
+  },
+  {
+
+    "name": "Super Chief",
+    "country": "USA",
+    "year": 1936,
+    "description": "Super Chief is one of the most famous trains in the United States connected the Los Angles, California, and Chicago, Illinois. It did so in a spectacular manner, with the high-end service offering, premium lodging, and prices that attracted wealthier and business customers. Super Chief train started its operation in 1936 on the line that was 3584 km long, traveling initially twice per week and once per day starting 1948. It reached its popularity because it often transported famous clientele from Hollywood."
+  },
+  {
+
+    "name": "Peruvian Central Railway",
+    "country": "Peru",
+    "year": 1869,
+    "description": "Peruvian Central Railw ay train line gained fame across the world for being the highest altitude train line in the world. During the journey between La Oroya and Lima, that features 66 tuneless and 56 bridges, trains on this line climb all the way to the altitude of 3.9 kilometers. Because of this, Peruvian Central Railway trains have an onboard doctor that can help passengers who experience symptoms of altitude sickness."
+  },
+  {
+
+    "name": "Maharajas Express",
+    "country": "India",
+    "year": 2010,
+    "description": "Maharajas Express from India is regarded today as one of the most luxurious trains ever created. It offers truly state of the art facilities and amenities, and even “Presidential Suite” - a train car dedicated to one passenger. Because this it dedicates so much space to each user, it's maximum capacity is just 88 people."
+  },
+  {
+
+    "name": "Bernina Express",
+    "country": "Switzerland",
+    "year": 1908,
+    "description": "Taken for a mile for a mile, the Bernina Express - running from Chur and St. Moritz in eastern Switzerland to Tirano in Northern Italy - is considered the most scenic journey in the world, and for good reason. The 90-mile, four-hour trek is every bit as amazing as you may have heard, journeying through 55 tunnels and 196 bridges, and offering unforgettable views of the spectacular alpine landscape, massive waterfalls, dramatic glaciers, and deep ravines. The red carriages feature panoramic windows so there are no bad seats, and you can enjoy food, drinks, and live commentary on board."
+  },
+  {
+
+    "name": " Flam",
+    "country": "Norway",
+    "year": 1941,
+    "description": "Feel like you're on top of the world - literally - at the start of the 310-mile railway running from Oslo to Bergen in Norway - the highest major train route in Northern Europe. The journey from the mountain station of Myrdal down to Flam deep in the fjord has been voted one of the most scenic rail journeys in the world, and is also one of the steepest normal track railway lines, dropping 2,824 feet to the fjord below in just under an hour. Take in the awe-inspiring views of rugged mountains, deep valleys, and thundering waterfalls as you descend into the Aurlandsfjord."
+  },
+  {
+
+    "name": "Rocky Mountaineer",
+    "country": "Canada",
+    "year": 1990,
+    "description": "A journey aboard the famed navy blue and gold carriages of the Rocky Mountaineer has topped many a bucket list over the years. Synonymous with true luxury, breathtaking adventures, delicious food, inspiring landscapes, and unparalleled service – Canada’s Rocky Mountains await, and this is a truly spectacular way to experience them! The thrilling two-day journey covers four different routes through the Rockies to Banff, Jasper,  Lake Louise, Whistler, and Quesnel, over the old Canadian Pacific line to Vancouver, which created the modern nation of Canada in 1885. Experience glacier-fed lakes, lush forests, rushing rivers, and an abundance of wildlife right outside your window. If you book a “Gold Leaf” ticket, you will enjoy riding and dining in traditional-style Dome Cars for premium views and the utmost comfort."
+  },
+  {
+
+    "name": "Jacobite Steam Train",
+    "country": "United Kingdom",
+    "year": 1901,
+    "description": "Discover one of Britain’s best-loved scenic railways on this epic 42-mile journey, through the dramatic, wild expanses of the Scottish Western Highlands. Travel by steam train on the vintage carriages of The Jacobite, starting at the highest mountain in Britain, Ben Nevis, in Fort William. Marvel at the natural sights out your window as the train winds through mountain and glen, and over massive viaducts to Europe’s deepest seawater loch, Loch Morar, on the way to Mallaig. You'll also stop at the charming village of Glenfinnan and pass scenic beaches before the commencement of your journey. This scenic line has come to have more recent popularity as the Hogwarts Express, as it was featured in the famous Harry Potter books and movies."
+  },
+  {
+
+    "name": "Cruise Train",
+    "country": "Japan",
+    "year": 2013,
+    "description": "Often referred to as the world's most luxurious train, Japan's Cruise Train Seven Stars brings old-school luxury to a technologically advanced railway. It lays claim to being the country's first luxury sleeper, with its first run in 2013. With multi-day tours around the island of Kyushu, riders onboard the Seven Stars will get up close to both mountains and the seaside. But fair warning — the train can only carry up to 28 passengers at a time. Demand is so high that prospective riders must enter a lottery, and winners are then invited to purchase their place on an upcoming itinerary."
+  },
+  {
+
+    "name": "The Mallard",
+    "country": "United Kingdom",
+    "year": 1938,
+    "description": "The LNER Mallard became the world's fastest train at a fascinating speed of 125.88 mph on July 3, 1938. The trains traveled for approximately one and half million miles. The steam locomotive ceased to operate in 1963 and since then Mallard has been a part of National Railway Museum in York."
+  },
+  {
+
+    "name": "The Presidential Train",
+    "country": "Portugalia",
+    "year": 1890,
+    "description": "Portugal's Douro Valley has become an internationally recognized culinary destination. The Presidential Train brings some of the world's finest chefs to some of the world's freshest food as it chugs from Porto to Quinta do Vesuvio, on the eastern coast of the Douro Valley. Acclaimed chefs board every day for ten hours of dining delight, paired with wines from the region. Passengers can relax in private cabins and watch the golden valley through their windows as they wait for meal service."
+  },
+  {
+
+    "name": "20th Century Limited",
+    "country": "USA",
+    "year": 1902,
+    "description": "The United States had several famous trains during its long history of railroad transport, but none received more attention and popularity than the 20th Century Limited – an express passenger train that ran the route between New York City and Chicago from 1902 to 1967. During its time of operation, it not only significantly shortened travel time between those two cities, but it also catered upper classes of passengers (richer or business travelers) that expected a certain level of high-end service during their trips. 20th Century Limited train catered to their needs by offering high-class catering, fast travel, premium logging, and red carpet boarding and exiting on the stations in NYC's Grand Central Terminal station and Chicago's LaSalle Street Station. 1938 version of the 20th Century Limited was rated by many as the ultimate ground-based passenger travel service of that time."
+  }
+]

@@ -5,7 +5,7 @@
 
         <div class="form-group">
           <label for="trainID">ID</label>
-          <input [(ngModel)]="train.id" type="number" class="form-control" id="trainID" name="ID" required disabled>
+          <input [(ngModel)]="train._id" type="text" class="form-control" id="trainID" name="ID" required disabled>
         </div>
 
         <div class="form-group">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-          <label for="trainDescription">Description*</label>
+          <label for="trainDescription">Description</label>
           <textarea [(ngModel)]="train.description" class="form-control" id="trainDescription" name="description" cols="30"
             rows="10" pattern=".{0,1000}"></textarea>
         </div>

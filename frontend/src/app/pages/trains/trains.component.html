@@ -1,29 +1,35 @@
-<h1 class="text-center my-5"> Trains</h1>
+<div *ngIf="!signedIn">
+  <h1 class="text-center my-5"> Please, sign in</h1>
+</div>
 
-<div class="row mx-5">
+<div *ngIf="signedIn">
+  <h1 class="text-center my-5"> Trains</h1>
 
-  <div class="card mb-3 mr-3" *ngFor="let train of trainList$ | async" (click)="onSelect(train)">
-    <img [src]="train.pic" class="card-img-top" [alt]="train.name" height="210px">
-    <div class="card-body d-flex flex-column">
-      <h5 class="card-title">{{ train.name }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ train.country }}, {{ train.year }}</h6>
-      <p class="card-text">{{ train.description | cutter:240}}</p>
-      <div class="mt-auto text-right">
-        <div *ngIf="admin" class="btn-group">
-          <button class="btn btn-primary" [routerLink]="['/edit-train', train.id]"><i class="fa fa-pencil"
-              aria-hidden="true"></i></button>
-          <button class="btn btn-danger" (click)="onDelete(train)"><i class="fa fa-times"
-              aria-hidden="true"></i></button>
+  <div class="row mx-5">
+
+    <div class="card mb-3 mr-3" *ngFor="let train of trainList$ | async" (click)="onSelect(train)">
+      <img [src]="train.pic" class="card-img-top" [alt]="train.name" height="210px">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ train.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ train.country }}, {{ train.year }}</h6>
+        <p class="card-text">{{ train.description | cutter:240}}</p>
+        <div class="mt-auto text-right">
+          <div *ngIf="signedIn" class="btn-group">
+            <button class="btn btn-primary" [routerLink]="['/edit-train', train._id]"><i class="fa fa-pencil"
+                aria-hidden="true"></i></button>
+            <button class="btn btn-danger" (click)="onDelete(train)"><i class="fa fa-times"
+                aria-hidden="true"></i></button>
+          </div>
         </div>
       </div>
     </div>
+
+    <div *ngIf="signedIn" class="card newTrainCard" [routerLink]="['/edit-train', 0]">
+      <img src="../../../assets/img/plus-sign-png-icon-163383.png" class="text-center" style="margin:auto;"
+        width="150px" height="150px" alt="...">
+    </div>
+
+    <app-train-detail [train]="myTrain" [showTrainDetail]="showTrainDetail"></app-train-detail>
+
   </div>
-
-  <div *ngIf="admin" class="card newTrainCard" [routerLink]="['/edit-train', 0]">
-    <img src="../../../assets/img/plus-sign-png-icon-163383.png" class="text-center" style="margin:auto;" width="150px"
-      height="150px" alt="...">
-  </div>
-
-  <app-train-detail [train]="myTrain" [showTrainDetail]="showTrainDetail"></app-train-detail>
-
 </div>

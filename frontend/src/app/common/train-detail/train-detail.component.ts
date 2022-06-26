@@ -24,7 +24,8 @@ export class TrainDetailComponent implements OnInit {
   }
 
   buyTicketForTrain(train: Train):void {
-    const myTrainID = train.id.toString()
+    let myTrainID = ''
+    if (train._id !== undefined) {myTrainID = train._id.toString()}
     localStorage.setItem('myTrainID', myTrainID)
     this.router.navigateByUrl('tickets')
   }

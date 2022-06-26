@@ -16,7 +16,7 @@ illetve adminisztrátorként
 - vonatjegyek kezelésére (crud)
 - vonatok kezelésére (crud)
 - számlák kezelésére (crud)
-- vásárlók kezelésére (crud)
+- felhasználók kezelésére (crud)
 
 Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
 
@@ -63,13 +63,13 @@ Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
 | Adminként | szeretnék új vonatot hozzáadni | hogy kiegészítsem az adatbázist az újonnan elérhető vonatokkel. | Új vonat hozzáadása az utolsó kártyán, amely átirányít az új vonat felvétele oldalra. |
 | Adminként | szeretném szerkeszteni a meglévő vonatokat | hogy kijavítsam/kibővítsem az vonat adatait. | Módosítás gomb a vonat kártyán, amely átirányít az vonat szerkesztése oldalra. |
 | Adminként | szeretnék törölni egy vonatot | hogy a már nem elérhető/hibás jegyek ne szerepeljenek az adatbázisban. | Törlés gomb a vonat kártyán, amely megerősítés után törli az vonatot. |
-### Vásárlók oldal
+### Felhasználók oldal
 
 | Felhasználó személye | Tevékenység | Haszon | Elfogadási kritérium |
 | --- | --- | --- | --- |
-| Adminként | szeretném látni az összes vásárlót | hogy kezelhessem őket | Lista az összes vásárlóról |
-| Adminként | szeretném szerkeszteni a meglévő vásárlókat | hogy kijavítsam a vásárló adatait. | Módosítás gomb a vásárló sorában, amely átirányít az vásárló szerkesztése oldalra. |
-| Adminként | szeretnék törölni egy vásárlót | hogy már ne szerepeljen az adatbázisban. | Törlés gomb a vásárló sorában, amely megerősítés után törli az vásárlót. |
+| Adminként | szeretném látni az összes felhasználót | hogy kezelhessem őket | Lista az összes felhasználóról |
+| Adminként | szeretném szerkeszteni a meglévő felhasználókat | hogy kijavítsam a felhasználó adatait. | Módosítás gomb a felhasználó sorában, amely átirányít az felhasználó szerkesztése oldalra. |
+| Adminként | szeretnék törölni egy felhasználót | hogy már ne szerepeljen az adatbázisban. | Törlés gomb a felhasználó sorában, amely megerősítés után törli az felhasználót. |
 
 ### Számlák oldal
 
