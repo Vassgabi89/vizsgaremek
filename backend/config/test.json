@@ -1,7 +1,7 @@
 {
     "database": {
-        "user": "dbUser",
-        "pass": "qW8davwDB9Tptghp",
-        "host": "fapi02-cluster.lvsuq.mongodb.net/?retryWrites=true&w=majority"
+        "db_username": "vizsgaremek",
+        "db_password": "vizsgaremek",
+        "db_host": "@cluster0.41sdc.mongodb.net/?retryWrites=true&w=majority"
     }
 }

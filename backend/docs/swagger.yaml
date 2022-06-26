@@ -1,0 +1,170 @@
+openapi: 3.0.0 # openAPI verziószám
+info:
+  version: 1.0.0 # Alkalmazásunk verziószáma
+  title: Train 360 API # Alkalmazásunk címe
+  description: How to works Train 360 API # leírása
+servers:
+  - url: http://localhost:3000 # Szerver
+paths: # Lehetséges útvonalak
+  /ticket:
+    get: # Lehetséges kérések
+      description: Returns a list of tickets
+      security:
+        - bearerAuth: []
+      responses: # Lehetséges válaszok
+        "200":
+          description: List of tickets returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ticket"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new ticket
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ticket"
+      responses:
+        "201":
+          description: ticket has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ticket"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /ticket/{ticket_id}:
+    get:
+      description: Returns the ticket with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ticket data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ticket"
+        "404":
+          description: ticket with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      description: Update a ticket
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ticket"
+      responses:
+        "201":
+          description: ticket has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ticket"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ticket:
+      type: object
+      required:
+        - departure_location
+        - arrival_location
+        - departure_date
+        - departure_time
+        - arrival_date
+        - arrival_time
+      properties:
+        departure_location:
+          type: string
+        arrival_location:
+          type: string
+        departure_date:
+          type: date
+        departure_time:
+          type: string
+        arrival_date:
+          type: date
+        arrival_time:
+          type: string
+        travel_time:
+          type: string
+        services:
+          type: string
+        transfers:
+          type: number
+        class:
+          type: array
+          items:
+            type: number
+            enum: [1, 2, 3]
+    Error:
+      type: object
+      required:
+        - message
+        - has_error
+      properties:
+        message:
+          type: string
+        has_error:
+          type: boolean
+
+# author:
+#           type: object
+#           $ref: "#/components/schemas/ticket"

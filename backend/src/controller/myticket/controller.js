@@ -24,34 +24,9 @@ exports.findOne = (req, res, next) => {
     return service.findOne(req.params.id)
         .then( entity => {
             if (!entity) {
-                return next(new createError.NotFound("train not found"));
+                return next(new createError.NotFound("Myticket not found"));
             }
             return res.json(entity);
         });
 };
 
-exports.update = (req, res, next) => {
-
-    return service.update(req.params.id, req.body)
-        .then(entity => {
-            res.json(entity);
-        })
-        .catch( err => {
-            next(new createError.InternalServerError(err.message));
-        });
-};
-
-exports.delete = (req, res, next) => {
-    return service.delete(req.params.id)
-        .then( () => res.json({}) )
-        .catch( err => {
-
-            if (err.message === "Not found") {
-                return next(
-                    new createError.NotFound(err.message)
-                )
-            }
-
-            next(new createError.InternalServerError(err.message));
-        } );
-};

@@ -24,7 +24,7 @@ exports.findOne = (req, res, next) => {
     return service.findOne(req.params.id)
         .then( entity => {
             if (!entity) {
-                return next(new createError.NotFound("train not found"));
+                return next(new createError.NotFound("user not found"));
             }
             return res.json(entity);
         });

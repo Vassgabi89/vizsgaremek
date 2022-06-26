@@ -4,8 +4,11 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
 //const seeder =  require('./seeder/seeder')
+const swaggerUi = require('swagger-ui-express')
+const YAML = require('yamljs')
 
 const app = express()
+const swaggerDocument = YAML.load('./docs/swagger.yaml')
 
 const {
     db_host,
@@ -34,6 +37,7 @@ app.use('/bills', require('./controller/bill/router'))
 app.use('/trains', authencticateJwt, require('./controller/train/router'))
 app.use('/users', require('./controller/user/router'))
 app.use('/login', require('./controller/login/router'))
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use('/', (req, res) => {
     res.send('Train360')
