@@ -28,6 +28,12 @@ paths: # Lehetséges útvonalak
                 $ref: "#/components/schemas/Error"
     post:
       description: Creates a new ticket
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
       security:
         - bearerAuth: []
       requestBody:
@@ -61,7 +67,7 @@ paths: # Lehetséges útvonalak
       security:
         - bearerAuth: []
       parameters:
-        - name: ticket_id
+        - name: _id
           in: path
           required: true
           schema:
@@ -89,6 +95,12 @@ paths: # Lehetséges útvonalak
       description: Update a ticket
       security:
         - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -114,6 +126,509 @@ paths: # Lehetséges útvonalak
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a ticket
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Ticket has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        '404':
+          description: Ticket with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /myticket:
+    get:
+      description: Returns a list of mytickets
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: List of mytickets returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/myticket"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new myticket
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/myticket"
+      responses:
+        "201":
+          description: myticket has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/myticket"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /myticket/{myticket_id}:
+    get:
+      description: Returns the myticket with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: myticket data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/myticket"
+        "404":
+          description: myticket with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /train:
+    get:
+      description: Returns a list of trains
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: List of trains returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/train"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new train
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/train"
+      responses:
+        "201":
+          description: train has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/train"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /train/{train_id}:
+    get:
+      description: Returns the train with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: train data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/train"
+        "404":
+          description: train with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      description: Update a train
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/train"
+      responses:
+        "201":
+          description: train has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/train"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a train
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Train has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        '404':
+          description: Train with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user:
+    get:
+      description: Returns a list of users
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/user"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new user
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
+      responses:
+        "201":
+          description: user has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/{user_id}:
+    get:
+      description: Returns the user with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: user data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        "404":
+          description: user with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      description: Update a user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
+      responses:
+        "201":
+          description: user has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a user
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: User has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        '404':
+          description: User with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /bill:
+    get: # Lehetséges kérések
+      description: Returns a list of bills
+      security:
+        - bearerAuth: []
+      responses: # Lehetséges válaszok
+        "200":
+          description: List of bills returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/bill"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new bill
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/bill"
+      responses:
+        "201":
+          description: bill has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/bill"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /bill/{bill_id}:
+    get:
+      description: Returns the bill with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: bill data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/bill"
+        "404":
+          description: bill with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 components:
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme
@@ -154,6 +669,109 @@ components:
           items:
             type: number
             enum: [1, 2, 3]
+
+    myticket:
+      type: object
+      required:
+        - departure_location
+        - arrival_location
+        - departure_date
+        - departure_time
+        - arrival_date
+        - arrival_time
+      properties:
+        departure_location:
+          type: string
+        arrival_location:
+          type: string
+        departure_date:
+          type: date
+        departure_time:
+          type: string
+        arrival_date:
+          type: date
+        arrival_time:
+          type: string
+        travel_time:
+          type: string
+        services:
+          type: string
+        transfers:
+          type: number
+        class:
+          type: array
+          items:
+            type: number
+            enum: [1, 2, 3]
+        trainID:
+          type: string
+        train:
+          type: object
+          $ref: "#/components/schemas/train"
+        passengers:
+          type: number
+        reducedFare:
+          type: number
+        fullPrice:
+          type: number
+        user:
+          type: string
+
+    train:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        year:
+          type: number
+        description:
+          type: string
+
+    user:
+      type: object
+      required:
+        - email
+        - password
+        - first_name
+        - last_name
+        - role
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        role:
+          type: number
+
+    bill:
+      type: object
+      required:
+      properties:
+        myTicketID:
+          type: string
+        myTicket:
+          type: object
+          $ref: "#/components/schemas/myticket"
+        userID:
+          type: string
+        user:
+          type: object
+          $ref: "#/components/schemas/user"
+        passengers:
+          type: number
+        reducedFare:
+          type: number
+        fullPrice:
+          type: number
+        
     Error:
       type: object
       required:
@@ -165,6 +783,3 @@ components:
         has_error:
           type: boolean
 
-# author:
-#           type: object
-#           $ref: "#/components/schemas/ticket"

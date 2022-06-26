@@ -7,15 +7,15 @@
 
 Ez egy mobilra is optimalizált, bootstrappal támogatott Angular alapú alkalmazás, melyben lehetőség van felhasználóként
 
+- elérhető vonatok megtekintésére
 - vonatjegyek megtekintésére és vásárlására
 - megvásárolt jegyek megtekintésére
-- elérhető vonatok megtekintésére
+- számlák megtekintésére
 
 illetve adminisztrátorként
 
 - vonatjegyek kezelésére (crud)
 - vonatok kezelésére (crud)
-- számlák kezelésére (crud)
 - felhasználók kezelésére (crud)
 
 Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
@@ -51,7 +51,7 @@ Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
 
 | Felhasználó személye | Tevékenység | Haszon | Elfogadási kritérium |
 | --- | --- | --- | --- |
-| Felhasználóként | szeretném látni a megvásárolt jegyeimet | hogy ellenőrizni és nyomtatni tudjam őket | Lista az összes jegyről, soronként nyomtatási gombbal, ami egy modalt nyit(a jegy nyomtatható formájában) |
+| Felhasználóként | szeretném látni a megvásárolt jegyeimet | hogy ellenőrizni tudjam őket | Lista az összes jegyről, soronként számla gombbal, ami egy modalt nyit(a számla nyomtatható formájában) |
 
 ### Vonatok oldal
 
@@ -70,12 +70,3 @@ Az oldal rendkívül felhasználóbarát és kellemes megjelenésű!
 | Adminként | szeretném látni az összes felhasználót | hogy kezelhessem őket | Lista az összes felhasználóról |
 | Adminként | szeretném szerkeszteni a meglévő felhasználókat | hogy kijavítsam a felhasználó adatait. | Módosítás gomb a felhasználó sorában, amely átirányít az felhasználó szerkesztése oldalra. |
 | Adminként | szeretnék törölni egy felhasználót | hogy már ne szerepeljen az adatbázisban. | Törlés gomb a felhasználó sorában, amely megerősítés után törli az felhasználót. |
-
-### Számlák oldal
-
-| Felhasználó személye | Tevékenység | Haszon | Elfogadási kritérium |
-| --- | --- | --- | --- |
-| Felhasználóként | szeretném látni az összes számlát | hogy választani tudjak | Lista az összes számláról |
-| Adminként | szeretnék új számlát hozzáadni | hogy kiegészítsem az adatbázist | Új számla hozzáadása gomb, amely átirányít az új számla felvétele oldalra. |
-| Adminként | szeretném szerkeszteni a meglévő számlákat | hogy kijavítsam/kibővítsem az számla adatait. | Módosítás gomb a számla sorában, amely átirányít az számla szerkesztése oldalra. |
-| Adminként | szeretnék törölni egy számlát | hogy a már nem elérhető/hibás számlák ne szerepeljenek az adatbázisban. | Törlés gomb a számla sorában, amely megerősítés után törli az számlát. |
