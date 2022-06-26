@@ -1,4 +1,4 @@
-<div *ngIf="!admin" class="welcome">
+<div *ngIf="!signedIn" class="welcome">
     <div class="welcomeTexts">
       <h1 style="font-size: 100px;">Train 360</h1>
       <h2 style="font-size: 45px;">Where your journey begins...</h2>
@@ -15,7 +15,7 @@
       </div> -->
 </div>
 
-<div *ngIf="!admin" class="carouselContainer">
+<div *ngIf="!signedIn" class="carouselContainer">
 <div  id="train360Carousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#train360Carousel" data-slide-to="0" class="active"></li>
@@ -48,7 +48,7 @@
 </div>
 </div>
 
-<div *ngIf="admin" class="statistic">
+<div *ngIf="signedIn" class="statistic">
   <div class="text-center my-5">
     <h1>Statistics</h1>
     <app-statistics></app-statistics>

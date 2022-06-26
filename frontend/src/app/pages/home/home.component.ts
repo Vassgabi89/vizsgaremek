@@ -1,3 +1,4 @@
+import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
+  signedIn = this.loginService.signedIn()
+  //admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
     if (!localStorage.getItem('admin')) localStorage.setItem('admin', 'false')
