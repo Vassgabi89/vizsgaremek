@@ -15,7 +15,7 @@ module.exports = (model, populateList = []) => {
         },
         updateOne(req, res, next) {
             return service.updateOne(req.params.id, req.body)
-                .then(entity => res.json(entity)) //megállapodás, h post/put/patch esetén visszaküldjük a frontendnek a sikeresen létrehozott/ módosított felhasználót
+                .then(entity => res.json(entity))
                 .catch(err => {
                     res.statusCode = 501;
                     res.json(err);

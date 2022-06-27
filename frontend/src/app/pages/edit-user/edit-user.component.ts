@@ -35,16 +35,13 @@ export class EditUserComponent implements OnInit {
   onSubmit(user: User): void {
     if (!this.newUser) {
       const data = this.userService.update(user).subscribe(
-        //datas => console.log(datas)
         datas => this.router.navigateByUrl('users')
       )
     }
     else {
       const data = this.userService.create(user).subscribe(
-        //datas => console.log(datas)
         datas => this.router.navigateByUrl('users')
         )
       }
-      //this.router.navigateByUrl('users')
   }
 }

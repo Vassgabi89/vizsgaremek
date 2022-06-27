@@ -19,7 +19,6 @@ export class MyticketsService {
 
   get(id: string): Observable<Ticket> {
     const ticket = this.http.get<Ticket>(`${this.apiUrl}/${this.entityName}/${id}`)
-    //ticket.subscribe(d => console.log(d))
     return ticket
   }
 

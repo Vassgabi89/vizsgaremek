@@ -18,7 +18,6 @@ export class UserService {
 
   get(id: string): Observable<User> {
     const user = this.http.get<User>(`${this.apiUrl}/${this.entityName}/${id}`)
-    //user.subscribe(d => console.log(d))
     return user
   }
 
@@ -35,7 +34,6 @@ export class UserService {
   update(user: User): Observable<any> {
     const id = user._id;
     delete user._id;
-    //console.log(user);
     return this.http.patch<any>(`${this.apiUrl}/${this.entityName}/${id}`, user)
   }
 

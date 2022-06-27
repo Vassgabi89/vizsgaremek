@@ -50,7 +50,6 @@ const routes: Routes = [
   {
     path: '**',
     component: HomeComponent
-    //redirectTo: '' //ide jöhetne akár egy 404-es oldal is
   }
 ];
 

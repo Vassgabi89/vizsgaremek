@@ -23,21 +23,10 @@ export class TrainService {
 
   getAll(): Observable<Train[]> {
     const datas = this.http.get<Train[]>(`${this.apiUrl}/${this.entityName}`)
-    /*datas.subscribe(
-      trains => {
-        trains.forEach(train => {
-          train.pic= (`../../assets/img/trains/${train._id}.jpg`)
-      })
-      console.log(trains);
-      }
-    )
-    */
     return datas
   }
 
   create(train:Train): Observable<any> {
-    //console.log('new train');
-    //console.log(train);
     delete train._id;
     return this.http.post<any>(`${this.apiUrl}/${this.entityName}`, train)
   }

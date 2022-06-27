@@ -12,7 +12,6 @@ import { TrainService } from 'src/app/service/train.service';
 export class TrainsComponent implements OnInit {
 
   signedIn = this.loginService.signedIn()
-  //admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
 
   trainList$ = this.trainService.getAll()
   myTrain!: Train
@@ -25,14 +24,6 @@ export class TrainsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    /*
-    this.trainList$.subscribe(trains =>{
-      trains.forEach(train => {
-        train.pic= (`../../assets/img/trains/${train._id}.jpg`)
-        console.log(train.pic);
-      });
-    })
-    */
   }
 
   onSelect(train: Train):void {
@@ -43,10 +34,8 @@ export class TrainsComponent implements OnInit {
   onDelete(train: Train): void {
     if (!confirm('Are you sure')) return
     if (train._id !== undefined) this.trainService.delete(train['_id']).subscribe(
-      //datas => console.log(datas)
       datas => location.reload()
     )
-    //location.reload()
   }
 
 }

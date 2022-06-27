@@ -35,17 +35,14 @@ export class EditTrainComponent implements OnInit {
   onSubmit(train: Train): void {
     if (!this.newTrain) {
       const data = this.trainService.update(train).subscribe(
-        //datas => console.log(datas)
         datas => this.router.navigateByUrl('trains')
       )
     }
     else {
       const data = this.trainService.create(train).subscribe(
-        //datas => console.log(datas)
         datas => this.router.navigateByUrl('trains')
         )
       }
-      //this.router.navigateByUrl('trains')
   }
 
 }

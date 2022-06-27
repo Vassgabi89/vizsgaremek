@@ -56,7 +56,7 @@ import { EditUserComponent } from './pages/edit-user/edit-user.component';
       deps: [
         LoginService
       ],
-      multi: true //így több provider is beköthető ugyanarra a műveletre
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

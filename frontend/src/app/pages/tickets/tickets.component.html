@@ -125,11 +125,11 @@
       <div class="ticketInformation">
         <form #ticketForm="ngForm" (ngSubmit)='buyTicket()'>
           <div class="dropdown-divider"></div>
-          <h4><span>From</span> {{ myTicket.departure_location }} <span>on</span> {{ myTicket.departure_date }}
+          <h4><span>From</span> {{ myTicket.departure_location }} <span>on</span> {{ myTicket.departure_date | date }}
             <span>at</span> {{ myTicket.departure_time }}
           </h4>
           <h4><span>To</span> {{ myTicket.arrival_location }} <span *ngIf="myTicket.arrival_date">on</span>
-            {{ myTicket.arrival_date }} <span *ngIf="myTicket.arrival_time">at</span> {{ myTicket.arrival_time }}</h4>
+            {{ myTicket.arrival_date | date  }} <span *ngIf="myTicket.arrival_time">at</span> {{ myTicket.arrival_time }}</h4>
 
           <div class="dropdown-divider"></div>
           <p>Travel time: {{ myTicket.travel_time }}</p>

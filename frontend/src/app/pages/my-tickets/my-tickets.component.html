@@ -39,8 +39,8 @@
         <tr class="ticket" *ngFor="let ticket of myTicketList">
           <td>{{ ticket.departure_location }}</td>
           <td>{{ ticket.arrival_location }}</td>
-          <td class="text-center hideInMobileView">{{ ticket.departure_date }} {{ ticket.departure_time }}</td>
-          <td class="text-center hideInMobileView">{{ ticket.arrival_date }} {{ ticket.arrival_time }}</td>
+          <td class="text-center hideInMobileView">{{ ticket.departure_date | date }} {{ ticket.departure_time }}</td>
+          <td class="text-center hideInMobileView">{{ ticket.arrival_date | date }} {{ ticket.arrival_time }}</td>
           <td class="text-center">{{ ticket.reducedFare }}%</td>
           <td class="text-center">{{ ticket.passengers }}</td>
           <td class="text-center">{{ ticket.fullPrice }} Ft</td>
@@ -60,7 +60,7 @@
           <i class="fa fa-times"></i>
         </button>
 
-        <h2 class="text-center font-weight-bold my-5">Bill</h2>
+        <h2 class="text-center font-weight-bold my-3">Bill</h2>
 
         <div class="dropdown-divider my-3"></div>
 
@@ -80,26 +80,56 @@
         </div>
         <div class="dropdown-divider"></div>
 
-        <!-- Product details -->
+        <!-- Ticket details -->
+        <h4 class="text-center font-weight-bold my-2">Ticket details</h4>
 
         <div class="row">
           <table class="table mx-3 my-3">
             <thead>
               <tr class="text-center">
-                <th>Name</th>
-                <th>Price</th>
-                <th>Passengers</th>
-                <th>Reduced fare</th>
-                <th>Total</th>
+                <th class="bill-th">Departure</th>
+                <th class="bill-th">Departure</th>
+                <th class="bill-th">Arrival</th>
+                <th class="bill-th">Arrival</th>
+                <th class="bill-th">Train</th>
               </tr>
             </thead>
             <tbody>
               <tr class="text-center">
-                <td class="font-weight-bold">Ticket</td>
-                <td>{{ myBill.myTicket?.price }} Ft</td>
-                <td>{{ myBill.passengers }}</td>
-                <td>{{ myBill.reducedFare }}%</td>
-                <td>{{ myBill.fullPrice }} Ft</td>
+                <td class="bill-td">{{ myBill.myTicket?.departure_location }}</td>
+                <td class="bill-td">{{ myBill.myTicket?.departure_date | date }}</td>
+                <td class="bill-td">{{ myBill.myTicket?.arrival_location }}</td>
+                <td class="bill-td">{{ myBill.myTicket?.arrival_date | date }}</td>
+                <td class="bill-td">{{ myBill.myTicket?.train?.name }} Ft</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <!-- Bill details -->
+        <h4 class="text-center font-weight-bold my-2">Bill details</h4>
+
+        <div class="row">
+          <table class="table mx-3 my-3">
+            <thead>
+              <tr class="text-center">
+                <th class="bill-th">Name</th>
+                <th class="bill-th">Price</th>
+                <th class="bill-th">Passengers</th>
+                <th class="bill-th">Fare</th>
+                <th class="bill-th">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td class="font-weight-bold bill-td">Ticket</td>
+                <td class="bill-td">{{ myBill.myTicket?.price }} Ft</td>
+                <td class="bill-td">{{ myBill.passengers }}</td>
+                <td class="bill-td">{{ myBill.reducedFare }}%</td>
+                <td class="bill-td">{{ myBill.fullPrice }} Ft</td>
               </tr>
             </tbody>
           </table>

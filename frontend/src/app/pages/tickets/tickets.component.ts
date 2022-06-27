@@ -15,7 +15,7 @@ import { TrainService } from 'src/app/service/train.service';
 })
 export class TicketsComponent implements OnInit {
 
-  signedIn = this.loginService.signedIn() //lehet rövidíteni, nem kell a típust megadni, tudja
+  signedIn = this.loginService.signedIn()
 
   ticketList$ = this.ticketService.getAll()
   trainList$ = this.trainService.getAll()
@@ -59,7 +59,6 @@ export class TicketsComponent implements OnInit {
   }
 
   sorting(key: string, key2?: string): void {
-    //if (key2) key=key.concat(' ').concat(key2)
     key === this.sortKey ? this.clickCounter++ : (this.clickCounter = 0);
     this.sortDirection = this.clickCounter % 2 ? 'Z...A' : 'A...Z';
     this.sortKey = key;
@@ -77,10 +76,8 @@ export class TicketsComponent implements OnInit {
   onDelete(ticket: Ticket): void {
     if (!confirm('Are you sure')) return
     if (ticket._id !== undefined) this.ticketService.delete(ticket._id).subscribe(
-      //datas => console.log(datas)
       datas => location.reload()
     )
-    //location.reload()
   }
 
   onSelect(ticket: Ticket): void {
@@ -98,16 +95,6 @@ export class TicketsComponent implements OnInit {
   }
 
   buyTicket(): void {
-    /*
-    const ticketCookie = document.cookie.split('; ').find(cookie => cookie.startsWith(`myTickets=`))
-    //if (!ticketCookie) document.cookie = `myTickets= ${ticket.departure_location}---${ticket.arrival_location}---${ticket.departure_date}---${ticket.departure_time}---${ticket.travel_time}---${ticket.arrival_date}---${ticket.arrival_time}---${ticket.transfers}---${ticket.class}---${ticket.services}---${ticket.train?.name}---${ticket.price}---${ticket.passengers}---${ticket.reducedFare}---${ticket.fullPrice}!!!; expires=Fri, 30 Dec 2022 20:00:00 UTC;`
-    //else {
-      const myTickets = ticketCookie?.concat(` ${ticket.departure_location}---${ticket.arrival_location}---${ticket.departure_date}---${ticket.departure_time}---${ticket.travel_time}---${ticket.arrival_date}---${ticket.arrival_time}---${ticket.transfers}---${ticket.class}---${ticket.services}---${ticket.train?.name}---${ticket.price}---${ticket.passengers}---${ticket.reducedFare}---${ticket.fullPrice}!!!;`)
-      //document.cookie = `myTickets = ${myTickets}; expires = Fri, 30 Dec 2022 20:00:00 UTC`
-      document.cookie = `myTickets = ${myTickets}; expires = Fri, 30 Dec 2022 20:00:00 UTC`
-      //console.log(ticket.departure_date)
-    //}
-    this.router.navigateByUrl('mytickets')*/
     this.myBill.passengers = this.myTicket.passengers
     this.myBill.reducedFare = this.myTicket.reducedFare
     this.myBill.fullPrice = this.myTicket.fullPrice
@@ -119,20 +106,11 @@ export class TicketsComponent implements OnInit {
           return
         }
       });
-      /*
-       this.myBill.userID = users.find(user=> {
-        user.email === this.myTicket.user})._id
-      */
 
-
-      //console.log('myTicket');
-      //console.log(this.myTicket);
 
       this.myTicketService.create(this.myTicket).subscribe(
         savedTicket => {
           this.myBill.myTicketID = savedTicket._id
-          //console.log('myBill');
-          //console.log(this.myBill);
 
           this.ticketService.saveBill(this.myBill).subscribe(
             datas => {

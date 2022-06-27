@@ -1,5 +1,6 @@
 import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
+import { TrainService } from 'src/app/service/train.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   signedIn = this.loginService.signedIn()
-  //admin:boolean = (localStorage.getItem('admin') === 'true' ? true : false)
+  trainList$ = this.trainService.getAll()
+  carouselPictures! : string[]
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private trainService: TrainService
   ) { }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('admin')) localStorage.setItem('admin', 'false')
   }
 
 }

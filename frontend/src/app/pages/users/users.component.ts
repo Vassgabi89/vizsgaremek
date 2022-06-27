@@ -34,7 +34,6 @@ export class UsersComponent implements OnInit {
   }
 
   sorting(key: string, key2?: string): void {
-    //if (key2) key=key.concat(' ').concat(key2)
     key === this.sortKey ? this.clickCounter++ : (this.clickCounter = 0);
     this.sortDirection = this.clickCounter % 2 ? 'Z...A' : 'A...Z';
     this.sortKey = key;
@@ -52,9 +51,7 @@ export class UsersComponent implements OnInit {
   onDelete(ticket: Ticket): void {
     if (!confirm('Are you sure')) return
     if (ticket._id !== undefined) this.userService.delete(ticket._id).subscribe(
-      //datas => console.log(datas)
       datas => location.reload()
     )
-    //location.reload()
   }
 }
