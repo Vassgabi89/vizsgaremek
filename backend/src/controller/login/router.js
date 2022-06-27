@@ -39,8 +39,6 @@ router.post('/', async (req, res, next) => {
         password
     } = req.body;
 
-    //console.log(email, password);
-
     const user = await User.findOne({
         email
     });
@@ -65,7 +63,7 @@ router.post('/', async (req, res, next) => {
         res.json({
             success: true,
             accessToken,
-            user: { //ne lehessen látni a jelszót
+            user: {
                 ...user._doc,
                 password: ''
             },
